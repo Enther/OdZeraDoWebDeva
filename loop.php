@@ -1,11 +1,12 @@
 <?php
 	
-	include( 'baza.php' );
+	include( 'session.php' );
 
-	echo 'Lista kandydatów:<br>';
 
 
 	$tbl = $pdo->query( 'SELECT * FROM `regal`' );
+
+	echo '<br><a href="add.php">Dodaj Ksiazke</a><br>';
 
 	echo '<table border="1">';
 		echo '<tr>';
@@ -27,7 +28,7 @@
 				echo '<td>' . $value['tytul'] . '</td>';
 				echo '<td>' . $value['autor'] . '</td>';
 				echo '<td>' . $value['recenzja'] . '</td>';
-				echo '<td><a href="usun.php?id=' . $value['id'] . '">Usun</a></td>';
+				echo '<td><a href="usun.php?id=' . $value['id'] . '">Usun</a> | <a href="add.php?id=' . $value['id'] . '">Edytuj</a></td>';
 
 			echo '</tr>';
 

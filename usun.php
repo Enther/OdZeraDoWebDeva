@@ -1,6 +1,6 @@
 <?php
 	
-	include( 'baza.php' );
+	include( 'session.php' );
 
 	$id = isSet( $_GET['id'] ) ? intval( $_GET['id'] ) : 0;
 
