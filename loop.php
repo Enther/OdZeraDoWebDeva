@@ -4,7 +4,7 @@
 
 
 
-	$tbl = $pdo->query( 'SELECT * FROM `regal`' );
+	$tbl = $pdo->query( 'SELECT r.*, c.name FROM regal r LEFT JOIN category c ON r.cat_id = c.id ORDER BY r.id DESC;' );
 
 	echo '<br><a href="add.php">Dodaj Ksiazke</a><br>';
 
@@ -13,6 +13,7 @@
 
 			echo '<th>Tytul</th>';
 			echo '<th>Autor</th>';
+			echo '<th>Kategoria</th>';
 			echo '<th>Recenzja</th>';
 			echo '<th>Opcje</th>';
 
@@ -27,6 +28,7 @@
 
 				echo '<td>' . $value['tytul'] . '</td>';
 				echo '<td>' . $value['autor'] . '</td>';
+				echo '<td>' . $value['name'] . '</td>';
 				echo '<td>' . $value['recenzja'] . '</td>';
 				echo '<td><a href="usun.php?id=' . $value['id'] . '">Usun</a> | <a href="add.php?id=' . $value['id'] . '">Edytuj</a></td>';
 
