@@ -1,4 +1,5 @@
 <?php
+
 	include( 'baza.php' );
 
 	session_start();
