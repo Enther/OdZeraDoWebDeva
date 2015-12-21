@@ -8,7 +8,7 @@
 
     $count = $pdo->query( 'SELECT COUNT( id ) as cnt FROM regal' )->fetch()['cnt'];
 
-    $page = isSet( $_GET['page'] ) ? intval( $_GET['page'] - 1 ) : 1;
+    $page = isSet( $_GET['page'] ) ? intval( $_GET['page'] - 1 ) : 0;
 
     $limit = 10;
 
@@ -35,6 +35,7 @@
 
 			echo '<th>ID</th>';
 			echo '<th>Tytul</th>';
+			echo '<th>Okladka</th>';
 			echo '<th>Autor</th>';
 			echo '<th>Kategoria</th>';
 			echo '<th>Recenzja</th>';
@@ -48,6 +49,15 @@
 
 				echo '<td>' . $value['id'] . '</td>';
 				echo '<td>' . $value['tytul'] . '</td>';
+				echo '<td>';
+
+                    if( $value['cover'] ) {
+                        echo '<a target="_blank" href="img/' . str_replace( 'cover_', 'org_', $value['cover'] ) . '"><img src="img/' . $value['cover'] . '"></a>';
+                    } else {
+                        echo 'Brak okladki';
+                    }
+
+                echo '</td>';
 				echo '<td>' . $value['autor'] . '</td>';
 				echo '<td>' . $value['name'] . '</td>';
 				echo '<td>' . $value['recenzja'] . '</td>';
